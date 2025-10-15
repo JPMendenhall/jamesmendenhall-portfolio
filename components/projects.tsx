@@ -42,13 +42,14 @@ export function Projects() {
         </div>
 
         <div className="flex justify-center mt-8 mb-16 md:mb-8">
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-zinc-700 hover:border-zinc-500 hover:bg-zinc-900 transition-all duration-300 text-base px-8 py-6 rounded-full font-medium bg-transparent"
-          >
-            Contact Me
-          </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="border-white/20"
+              onClick={() => window.open('https://www.linkedin.com/in/jpmendenhall', '_blank')}
+            >
+              Contact Me
+            </Button>
         </div>
       </div>
     </section>
