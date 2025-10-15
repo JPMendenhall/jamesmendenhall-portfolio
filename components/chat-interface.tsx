@@ -12,13 +12,14 @@ const EXAMPLE_QUESTIONS = [
   "What's James's professional background?",
   "Tell me about the AI projects he's built",
   "Does James have compliance experience?",
-  "Upload or paste a job posting to see fit"
+  "Tell me about his hobbies"
 ]
 
 const COMPACT_QUESTIONS = [
-  "What's James's background?",
-  "Tell me about his AI projects",
-  "Upload/paste job to analyze fit"
+  "What's James's professional background?",
+  "Tell me about the AI projects he's built",
+  "Does James have compliance experience?",
+  "Tell me about his hobbies"
 ]
 
 interface ChatInterfaceProps {
@@ -246,7 +247,7 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
             title="Upload job posting (PDF, DOC, DOCX, TXT)"
           >
             <Paperclip className="w-5 h-5" />
-            {!compact && <span className="text-xs hidden md:inline">Upload Job</span>}
+            {<span className="text-xs hidden md:inline">Upload Job</span>}
           </button>
           <input
             type="text"
