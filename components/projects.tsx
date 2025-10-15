@@ -41,7 +41,7 @@ export function Projects() {
           ))}
         </div>
 
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-8 mb-16 md:mb-8">
           <Button
             size="lg"
             variant="outline"
