@@ -1,3 +1,5 @@
+"use client"
+
 import { ProjectCard } from "@/components/project-card"
 import { MessageSquare, TrendingUp, Gamepad2 } from "lucide-react"
 import { Button } from "@/components/ui/button"

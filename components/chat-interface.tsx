@@ -9,17 +9,15 @@ type Message = {
 }
 
 const EXAMPLE_QUESTIONS = [
-  "What's James's professional background?",
+  "What is James's background?",
   "Tell me about the AI projects he's built",
-  "Does James have compliance experience?",
-  "Tell me about his hobbies"
+  "Does James have compliance experience?"
 ]
 
 const COMPACT_QUESTIONS = [
-  "What's James's professional background?",
+  "What is James's background?",
   "Tell me about the AI projects he's built",
-  "Does James have compliance experience?",
-  "Tell me about his hobbies"
+  "Does James have compliance experience?"
 ]
 
 interface ChatInterfaceProps {
