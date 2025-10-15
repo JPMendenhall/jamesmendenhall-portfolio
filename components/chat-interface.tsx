@@ -48,41 +48,79 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
   }, [messages])
 
   const sendMessage = async (question?: string) => {
-    const messageText = question || input.trim()
-    if (!messageText || loading) return
+  const messageText = question || input.trim()
+  if (!messageText || loading) return
 
-    // Add user message
-    const userMessage: Message = { role: 'user', content: messageText }
-    setMessages(prev => [...prev, userMessage])
-    setInput('')
-    setLoading(true)
+  // Add user message
+  const userMessage: Message = { role: 'user', content: messageText }
+  setMessages(prev => [...prev, userMessage])
+  setInput('')
+  setLoading(true)
 
-    try {
-      const response = await fetch('https://web-production-888e.up.railway.app/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: messageText }),
-      })
+  try {
+    // Create empty assistant message that we'll update
+    const assistantMessageIndex = messages.length + 1
+    setMessages(prev => [...prev, { role: 'assistant', content: '' }])
 
-      if (!response.ok) throw new Error('Failed to get response')
+    const response = await fetch('https://web-production-888e.up.railway.app/chat-stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: messageText }),
+    })
 
-      const data = await response.json()
+    if (!response.ok) throw new Error('Failed to get response')
 
-      // Add assistant response
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: data.answer
-      }])
-    } catch (error) {
-      console.error('Error:', error)
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: "Sorry, I encountered an error. Please try again."
-      }])
-    } finally {
-      setLoading(false)
+    const reader = response.body?.getReader()
+    const decoder = new TextDecoder()
+
+    if (!reader) throw new Error('No reader available')
+
+    let accumulatedContent = ''
+
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+
+      const chunk = decoder.decode(value)
+      const lines = chunk.split('\n')
+
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          try {
+            const data = JSON.parse(line.slice(6))
+            
+            if (data.content) {
+              accumulatedContent += data.content
+              // Update the assistant message with accumulated content
+              setMessages(prev => {
+                const newMessages = [...prev]
+                newMessages[assistantMessageIndex] = {
+                  role: 'assistant',
+                  content: accumulatedContent
+                }
+                return newMessages
+              })
+            }
+
+            if (data.error) {
+              throw new Error(data.error)
+            }
+          } catch (e) {
+            // Skip invalid JSON
+          }
+        }
+      }
     }
+  } catch (error) {
+    console.error('Error:', error)
+    setMessages(prev => [...prev, {
+      role: 'assistant',
+      content: "Sorry, I encountered an error. Please try again."
+    }])
+  } finally {
+    setLoading(false)
   }
+}
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
