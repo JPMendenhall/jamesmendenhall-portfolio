@@ -257,6 +257,14 @@ export default function SneksPage() {
               <Button size="lg" variant="outline" className="border-white/20">
                 Back to Home
               </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-white/20"
+              onClick={() => window.open('/James_Mendenhall_Resume.pdf')}
+            >
+              Download Resume
+            </Button> 
             </Link>
             <Button 
               size="lg" 

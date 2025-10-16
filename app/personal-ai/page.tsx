@@ -303,6 +303,14 @@ export default function PersonalAIPage() {
             I can implement RAG systems like this for your business—with Langfuse observability from day one
           </p> */}
           <div className="flex gap-4 justify-center flex-wrap">
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-white/20"
+              onClick={() => window.open('/James_Mendenhall_Resume.pdf')}
+            >
+              Download Resume
+            </Button>
             <Link href="/">
               <Button size="lg" variant="outline" className="border-white/20">
                 Back to Home

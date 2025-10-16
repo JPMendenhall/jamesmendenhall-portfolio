@@ -231,7 +231,15 @@ export default function MarketsReportPage() {
           <p className="text-muted-foreground mb-8">
             I can build AI agents that run on schedule, synthesize data from multiple sources, and deliver insights automatically
           </p> */}
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-white/20"
+              onClick={() => window.open('/James_Mendenhall_Resume.pdf')}
+            >
+              Download Resume
+            </Button>
             <Link href="/">
               <Button size="lg" variant="outline" className="border-white/20">
                 Back to Home
