@@ -242,7 +242,7 @@ export default function SneksPage() {
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Play?</h2>
           <p className="text-muted-foreground mb-8">
-            Connect your wallet and compete on the leaderboard. Shows technical range beyond just AI integration.
+            Connect your wallet and compete on the leaderboard!
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button 

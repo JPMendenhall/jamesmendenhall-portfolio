@@ -227,10 +227,10 @@ export default function MarketsReportPage() {
       {/* CTA */}
       <section className="px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Want an Autonomous Agent?</h2>
+          {/* <h2 className="text-3xl font-bold mb-4">Want an Autonomous Agent?</h2>
           <p className="text-muted-foreground mb-8">
             I can build AI agents that run on schedule, synthesize data from multiple sources, and deliver insights automatically
-          </p>
+          </p> */}
           <div className="flex gap-4 justify-center">
             <Link href="/">
               <Button size="lg" variant="outline" className="border-white/20">
