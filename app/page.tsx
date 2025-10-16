@@ -13,7 +13,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <p className="text-white-400">
-              Try the AI assistant - ask about my experience, projects, skills, or upload/paste a job description to see how skills align
+              Meet AI assistant! Ask about my background, projects, experience, or upload a job description to see how I align.
             </p>
           </div>
           
