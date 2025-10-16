@@ -45,6 +45,14 @@ export function Projects() {
 
         <div className="flex justify-center mt-8 mb-16 md:mb-8">
             <Button 
+              size="lg"
+              variant="outline"
+              className="border-white/20"
+              onClick={() => window.open('/James_Mendenhall_Resume.pdf')}
+            >
+              Download Resume
+            </Button> 
+            <Button 
               size="lg" 
               variant="outline"
               className="border-white/20"
