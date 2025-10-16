@@ -32,11 +32,10 @@ export function LatestReport() {
         // Get the most recent report
         const latestReport = reportFiles[0]
         
-        // Fetch the HTML file directly from raw.githubusercontent.com via proxy
+        // Fetch the HTML file directly from GitHub raw (no proxy needed)
         const htmlUrl = `https://raw.githubusercontent.com/JPMendenhall/markets-report/main/src/reports/${latestReport.name}`
-        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(htmlUrl)}`
         
-        const htmlResponse = await fetch(proxyUrl)
+        const htmlResponse = await fetch(htmlUrl)
         
         if (!htmlResponse.ok) throw new Error('Failed to fetch report content')
         
