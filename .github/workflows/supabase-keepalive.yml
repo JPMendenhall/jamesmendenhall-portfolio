@@ -1,0 +1,23 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Runs every day at 12:00 PM UTC to prevent inactivity pause
+    - cron: '0 12 * * *'
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Flask API to keep Supabase active
+        run: |
+          curl -X POST https://web-production-888e.up.railway.app/chat \
+            -H "Content-Type: application/json" \
+            -d '{"question": "test"}' \
+            --connect-timeout 10 \
+            --max-time 30 \
+            || echo "Keep-alive ping completed (ignore errors)"
+      
+      - name: Log success
+        run: echo "Keep-alive workflow executed"
