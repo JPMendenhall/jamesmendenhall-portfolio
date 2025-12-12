@@ -151,59 +151,6 @@ export default function SneksPage() {
         </div>
       </section>
 
-      {/* What This Demonstrates */}
-      <section className="px-4 py-16 bg-white/[0.02]">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">What This Demonstrates</h2>
-          
-          <div className="glass rounded-xl p-8">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold mb-2">Full-Stack Development</h4>
-                <p className="text-muted-foreground text-sm">
-                  P5.js frontend, Node.js backend, PostgreSQL database, complete system ownership.
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Web3 Integration</h4>
-                <p className="text-muted-foreground text-sm">
-                  Base L2 NFTs, wallet verification, OpenSea API, gas-free gameplay UX.
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">AI Automation</h4>
-                <p className="text-muted-foreground text-sm">
-                  Claude API for creative content, GitHub Actions workflows, zero-touch posting.
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Security & Anti-Cheat</h4>
-                <p className="text-muted-foreground text-sm">
-                  Server-side replay validation, deterministic logic, attack prevention.
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Production Deployment</h4>
-                <p className="text-muted-foreground text-sm">
-                  Render hosting, PostgreSQL, cron jobs, real users, bi-weekly competitions.
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold mb-2">Creative + Technical</h4>
-                <p className="text-muted-foreground text-sm">
-                  Gaming, blockchain, AI content - demonstrates range beyond single domain.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
