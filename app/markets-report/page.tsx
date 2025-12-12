@@ -157,7 +157,7 @@ export default function MarketsReportPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">3. Report Generation</h3>
                   <p className="text-muted-foreground">
-                    Jinja2 templates generate beautiful HTML reports with dark theme styling. Reports display TradFi and Crypto side-by-side with color-coded performance indicators (green for gains, red for losses). Includes timestamp, market highlights, and AI commentary.
+                    Jinja2 templates generate HTML reports with dark theme styling. Reports display TradFi and Crypto side-by-side with color-coded performance indicators (green for gains, red for losses). Includes timestamp, market highlights, and AI commentary.
                   </p>
                 </div>
               </div>
