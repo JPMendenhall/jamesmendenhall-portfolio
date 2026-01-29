@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
+import { LatestAIPulse } from "@/components/latest-ai-pulse"
 
 export default function AIPulsePage() {
   return (
@@ -33,11 +34,7 @@ export default function AIPulsePage() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-6 text-center">Latest Daily Report</h2>
           <div className="glass rounded-xl overflow-hidden border border-white/10">
-            <iframe
-              src="https://raw.githack.com/JPMendenhall/ai-pulse/main/reports/daily/report_20260129.html"
-              className="w-full h-[1400px] bg-black"
-              title="Latest AI Pulse Report"
-            />
+            <LatestAIPulse />
           </div>
           <div className="text-center mt-6">
             <Button 
@@ -47,6 +44,19 @@ export default function AIPulsePage() {
             >
               View Report Archive
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="px-4 py-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Link href="/">
+              <Button size="lg" variant="outline" className="border-white/20">
+                Back to Home
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
