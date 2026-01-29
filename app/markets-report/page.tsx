@@ -204,22 +204,6 @@ export default function MarketsReportPage() {
                 <div className="text-sm text-muted-foreground">Monthly Cost</div>
               </div>
             </div>
-
-            <div className="mt-8 pt-8 border-t border-white/10">
-              <h3 className="text-lg font-semibold mb-4 text-center">What This Demonstrates</h3>
-              <div className="grid md:grid-cols-2 gap-4 text-sm">
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• <strong>AI Agent Architecture:</strong> Beyond simple RAG</li>
-                  <li>• <strong>Multi-API Orchestration:</strong> Synthesizing diverse data</li>
-                  <li>• <strong>Automation & CI/CD:</strong> GitHub Actions mastery</li>
-                </ul>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• <strong>Prompt Engineering:</strong> Personality tuning</li>
-                  <li>• <strong>Production Systems:</strong> Running daily without intervention</li>
-                  <li>• <strong>Cost Optimization:</strong> Free tier APIs only</li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </section>

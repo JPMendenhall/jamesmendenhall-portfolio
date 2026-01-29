@@ -1,11 +1,18 @@
 "use client"
 
 import { ProjectCard } from "@/components/project-card"
-import { MessageSquare, TrendingUp, Gamepad2 } from "lucide-react"
+import { MessageSquare, TrendingUp, Gamepad2, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Projects() {
   const projects = [
+    {
+      title: "AI Pulse",
+      description: "Daily AI news roundup running automatically every morning. Collects from 50+ sources, synthesizes with GPT-4o-mini, and generates beautiful HTML reports via GitHub Actions.",
+      tags: ["NewsAPI", "OpenAI", "GitHub Actions", "Automation"],
+      icon: Zap,
+      link: "/ai-pulse"
+    },
     {
       title: "Personal AI Assistant",
       description: "RAG chatbot that answers questions about my professional background. Built with Flask API, OpenAI embeddings, and Supabase vector database. Features semantic search and job posting analysis.",
@@ -36,8 +43,8 @@ export function Projects() {
           <h2 className="text-3xl md:text-4xl font-bold">Featured Projects</h2>
         </div>
 
-        {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Projects grid - now 2x2 on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
