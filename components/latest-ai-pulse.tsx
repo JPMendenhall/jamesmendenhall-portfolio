@@ -27,7 +27,7 @@ export function LatestAIPulse() {
   return (
     <iframe
       src={reportUrl}
-      className="w-full h-[2000px] bg-black border-0"
+      className="w-full h-[3500px] md:h-[2000px] bg-black border-0"
       title="Latest AI Pulse Report"
       scrolling="no"
     />
