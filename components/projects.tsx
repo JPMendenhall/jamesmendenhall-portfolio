@@ -71,7 +71,7 @@ export function Projects() {
               className="border-white/20"
               onClick={() => window.open('https://jamesmendenhall.art', '_blank')}
             >
-              jamesmendenhall.art
+              Art
             </Button>
             <Button
               size="lg"
