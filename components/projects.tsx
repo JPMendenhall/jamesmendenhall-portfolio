@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button"
 export function Projects() {
   const projects = [
     {
-      title: "SQLWars.io",
-      description: "Interactive SQL learning platform with 25 lessons across 6 themed databases. Features weekly timed challenges with global leaderboards and in-browser SQLite powered by WebAssembly.",
-      tags: ["React", "TypeScript", "sql.js", "Supabase"],
-      icon: Database,
-      link: "https://sqlwars.io"
+      title: "AI Pulse",
+      description: "Daily AI news roundup running automatically every morning. Collects from 50+ sources, synthesizes with GPT-4o-mini, and generates beautiful HTML reports via GitHub Actions.",
+      tags: ["NewsAPI", "OpenAI", "GitHub Actions", "Automation"],
+      icon: Zap,
+      link: "/ai-pulse"
     },
     {
       title: "Underground NFT Bot",
@@ -21,11 +21,11 @@ export function Projects() {
       link: "https://bot.jamesmendenhall.art"
     },
     {
-      title: "AI Pulse",
-      description: "Daily AI news roundup running automatically every morning. Collects from 50+ sources, synthesizes with GPT-4o-mini, and generates beautiful HTML reports via GitHub Actions.",
-      tags: ["NewsAPI", "OpenAI", "GitHub Actions", "Automation"],
-      icon: Zap,
-      link: "/ai-pulse"
+      title: "SQLWars.io",
+      description: "Interactive SQL learning platform with 25 lessons across 6 themed databases. Features weekly timed challenges with global leaderboards and in-browser SQLite powered by WebAssembly.",
+      tags: ["React", "TypeScript", "sql.js", "Supabase"],
+      icon: Database,
+      link: "https://sqlwars.io"
     },
     {
       title: "Personal AI Assistant",
