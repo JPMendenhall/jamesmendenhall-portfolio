@@ -8,7 +8,7 @@ export function Projects() {
   const projects = [
     {
       title: "AI Pulse",
-      description: "Daily AI news roundup running automatically every morning. Collects from 50+ sources, synthesizes with GPT-4o-mini, and generates beautiful HTML reports via GitHub Actions.",
+      description: "Daily AI news roundup running automatically every morning. Collects from 50+ sources, synthesizes with GPT-4o-mini, and generates HTML reports via GitHub Actions.",
       tags: ["NewsAPI", "OpenAI", "GitHub Actions", "Automation"],
       icon: Zap,
       link: "/ai-pulse"
