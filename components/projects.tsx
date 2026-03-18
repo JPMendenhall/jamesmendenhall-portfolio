@@ -7,6 +7,20 @@ import { Button } from "@/components/ui/button"
 export function Projects() {
   const projects = [
     {
+      title: "SQLWars.io",
+      description: "Interactive SQL learning platform with 25 lessons across 6 themed databases. Features live auto-validation in a Monaco editor powered by in-browser SQLite, with intelligent educational hints and progress tracking.",
+      tags: ["React", "TypeScript", "sql.js", "Supabase"],
+      icon: Database,
+      link: "https://sqlwars.io"
+    },
+    {
+      title: "Underground NFT Bot",
+      description: "Token-gated Discord bot platform for real-time NFT market monitoring. Features multi-collection tracking, smart price alerts with sweep detection, and blockchain-verified access control.",
+      tags: ["Node.js", "Discord", "OpenSea API", "viem"],
+      icon: Bot,
+      link: "https://bot.jamesmendenhall.art"
+    },
+    {
       title: "AI Pulse",
       description: "Daily AI news roundup running automatically every morning. Collects from 50+ sources, synthesizes with GPT-4o-mini, and generates beautiful HTML reports via GitHub Actions.",
       tags: ["NewsAPI", "OpenAI", "GitHub Actions", "Automation"],
@@ -26,20 +40,6 @@ export function Projects() {
       tags: ["AI Agents", "GitHub Actions", "Multi-API"],
       icon: TrendingUp,
       link: "/markets-report"
-    },
-    {
-      title: "SQLWars",
-      description: "Interactive SQL learning platform with 25 lessons across 6 themed databases. Features live auto-validation in a Monaco editor powered by in-browser SQLite, with intelligent educational hints and progress tracking.",
-      tags: ["React", "TypeScript", "sql.js", "Supabase"],
-      icon: Database,
-      link: "https://sqlwars.io"
-    },
-    {
-      title: "Underground NFT Bot",
-      description: "Token-gated Discord bot platform for real-time NFT market monitoring. Features multi-collection tracking, smart price alerts with sweep detection, and blockchain-verified access control.",
-      tags: ["Node.js", "Discord", "OpenSea API", "viem"],
-      icon: Bot,
-      link: "https://bot.jamesmendenhall.art"
     },
     {
       title: "Sneks",

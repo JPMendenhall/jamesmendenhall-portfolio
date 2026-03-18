@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink, type LucideIcon } from "lucide-react"
+import { ArrowRight, type LucideIcon } from "lucide-react"
 import Link from "next/link"
 
 interface ProjectCardProps {
@@ -34,11 +34,7 @@ export function ProjectCard({ title, description, tags, icon: Icon, link }: Proj
 
       <div className="text-foreground text-sm flex items-center">
         View Project
-        {isExternal ? (
-          <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-        ) : (
-          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-        )}
+        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
       </div>
     </div>
   )
