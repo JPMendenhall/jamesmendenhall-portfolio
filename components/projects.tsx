@@ -8,7 +8,7 @@ export function Projects() {
   const projects = [
     {
       title: "SQLWars.io",
-      description: "Interactive SQL learning platform with 25 lessons across 6 themed databases. Features live auto-validation in a Monaco editor powered by in-browser SQLite, with intelligent educational hints and progress tracking.",
+      description: "Interactive SQL learning platform with 25 lessons across 6 themed databases. Features weekly timed challenges with global leaderboards and in-browser SQLite powered by WebAssembly.",
       tags: ["React", "TypeScript", "sql.js", "Supabase"],
       icon: Database,
       link: "https://sqlwars.io"
