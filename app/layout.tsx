@@ -26,8 +26,8 @@ const pressStart2P = Press_Start_2P({
 })
 
 export const metadata: Metadata = {
-  title: "James Mendenhall - AI Integration Specialist",
-  description: "Building intelligent systems at the intersection of enterprise compliance and AI",
+  title: "James Mendenhall - Process Automation & AI Integration Specialist",
+  description: "Process Automation and AI Integration Specialist building intelligent systems",
   generator: "v0.app",
 }
 

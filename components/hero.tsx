@@ -17,7 +17,7 @@ export function Hero() {
 
         {/* Tagline */}
         <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-2 leading-relaxed text-balance">
-          Compliance + AI Integration Specialist building intelligent enterprise systems
+          Process Automation and AI Integration Specialist
         </p>
       </div>
     </section>

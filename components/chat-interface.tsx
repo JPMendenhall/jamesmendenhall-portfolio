@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, Loader2, Paperclip } from 'lucide-react'
+import { Send, Loader2 } from 'lucide-react'
 
 type Message = {
   role: 'user' | 'assistant'
@@ -11,13 +11,11 @@ type Message = {
 const EXAMPLE_QUESTIONS = [
   "What is James's background?",
   "Tell me about the AI projects he's built",
-  "Does James have compliance experience?"
 ]
 
 const COMPACT_QUESTIONS = [
   "What is James's background?",
   "Tell me about the AI projects he's built",
-  "Does James have compliance experience?"
 ]
 
 interface ChatInterfaceProps {
@@ -36,7 +34,6 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
@@ -128,55 +125,6 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
     }
   }
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file || loading) return
-
-    // Add user message showing file name
-    const userMessage: Message = { 
-      role: 'user', 
-      content: `📎 Analyzing job posting: ${file.name}` 
-    }
-    setMessages(prev => [...prev, userMessage])
-    setLoading(true)
-
-    try {
-      const formData = new FormData()
-      formData.append('file', file)
-
-      const response = await fetch('https://web-production-888e.up.railway.app/upload-job', {
-        method: 'POST',
-        body: formData
-      })
-
-      if (!response.ok) {
-        const error = await response.json()
-        throw new Error(error.error || 'Failed to process file')
-      }
-
-      const data = await response.json()
-
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: data.answer
-      }])
-    } catch (error) {
-      console.error('Error:', error)
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: error instanceof Error 
-          ? `Error: ${error.message}` 
-          : "Sorry, I couldn't process that file. Please try pasting the job description text instead."
-      }])
-    } finally {
-      setLoading(false)
-      // Reset file input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = ''
-      }
-    }
-  }
-
   const exampleQuestions = compact ? COMPACT_QUESTIONS : EXAMPLE_QUESTIONS
   const chatHeight = compact ? 'h-[400px]' : 'h-[600px]'
 
@@ -231,22 +179,6 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
       {/* Input */}
       <div className="p-4 border-t border-white/30">
         <div className="flex gap-2">
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileUpload}
-            accept=".pdf,.doc,.docx,.txt"
-            className="hidden"
-          />
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            disabled={loading}
-            className="bg-white/5 hover:bg-white/10 disabled:bg-gray-700 disabled:cursor-not-allowed border border-white/30 text-white rounded-xl px-4 py-3 transition-colors flex items-center gap-2"
-            title="Upload job posting (PDF, DOC, DOCX, TXT)"
-          >
-            <Paperclip className="w-5 h-5" />
-            {<span className="text-xs hidden md:inline">Upload Job</span>}
-          </button>
           <input
             type="text"
             value={input}

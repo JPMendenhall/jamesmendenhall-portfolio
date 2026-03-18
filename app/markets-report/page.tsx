@@ -180,34 +180,6 @@ export default function MarketsReportPage() {
         </div>
       </section>
 
-      {/* Performance Metrics */}
-      <section className="px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">Performance Metrics</h2>
-          
-          <div className="glass rounded-xl p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold text-blue-400 mb-2">4</div>
-                <div className="text-sm text-muted-foreground">Data Sources</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-purple-400 mb-2">6 AM</div>
-                <div className="text-sm text-muted-foreground">Daily Runtime</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-green-400 mb-2">100%</div>
-                <div className="text-sm text-muted-foreground">Autonomous</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-orange-400 mb-2">$0.30</div>
-                <div className="text-sm text-muted-foreground">Monthly Cost</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
@@ -216,21 +188,13 @@ export default function MarketsReportPage() {
             I can build AI agents that run on schedule, synthesize data from multiple sources, and deliver insights automatically
           </p> */}
           <div className="flex gap-4 justify-center flex-wrap">
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-white/20"
-              onClick={() => window.open('/James_Mendenhall_Resume.pdf')}
-            >
-              Download Resume
-            </Button>
             <Link href="/">
               <Button size="lg" variant="outline" className="border-white/20">
                 Back to Home
               </Button>
             </Link>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               onClick={() => window.open('https://www.linkedin.com/in/jpmendenhall', '_blank')}
             >
