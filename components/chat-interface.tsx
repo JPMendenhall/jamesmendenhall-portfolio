@@ -26,7 +26,7 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: compact 
+      content: compact
         ? "Hi! Ask me about James's experience, projects, or skills."
         : "Hi! I'm an AI assistant that can answer questions about James Mendenhall's professional background, projects, and experience. Ask me anything!"
     }
@@ -34,9 +34,25 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const userScrolledRef = useRef(false)
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
+
+  const isNearBottom = () => {
+    const container = messagesContainerRef.current
+    if (!container) return true
+    const threshold = 100
+    return container.scrollHeight - container.scrollTop - container.clientHeight < threshold
+  }
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    if (!userScrolledRef.current) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }
+  }
+
+  const handleScroll = () => {
+    if (!loading) return
+    userScrolledRef.current = !isNearBottom()
   }
 
   useEffect(() => {
@@ -47,6 +63,8 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
     const messageText = question || input.trim()
     if (!messageText || loading) return
 
+    userScrolledRef.current = false
+
     // Add user message
     const userMessage: Message = { role: 'user', content: messageText }
     setMessages(prev => [...prev, userMessage])
@@ -54,7 +72,7 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
     setLoading(true)
 
     try {
-      // Create empty assistant message that we'll update
+      // Create empty assistant message that we'll stream into
       const assistantMessageIndex = messages.length + 1
       setMessages(prev => [...prev, { role: 'assistant', content: '' }])
 
@@ -84,10 +102,9 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
           if (line.startsWith('data: ')) {
             try {
               const data = JSON.parse(line.slice(6))
-              
+
               if (data.content) {
                 accumulatedContent += data.content
-                // Update the assistant message with accumulated content
                 setMessages(prev => {
                   const newMessages = [...prev]
                   newMessages[assistantMessageIndex] = {
@@ -149,7 +166,7 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
       )}
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div ref={messagesContainerRef} onScroll={handleScroll} className="flex-1 overflow-y-auto p-6 space-y-4">
         {messages.map((message, idx) => (
           <div
             key={idx}
@@ -162,17 +179,14 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
                   : 'bg-white/5 text-gray-200 border border-white/30'
               }`}
             >
-              <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+              {message.role === 'assistant' && !message.content && loading ? (
+                <Loader2 className="w-5 h-5 animate-spin text-blue-500" />
+              ) : (
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+              )}
             </div>
           </div>
         ))}
-        {loading && (
-          <div className="flex justify-start">
-            <div className="bg-white/5 border border-white/30 rounded-2xl px-4 py-3">
-              <Loader2 className="w-5 h-5 animate-spin text-blue-500" />
-            </div>
-          </div>
-        )}
         <div ref={messagesEndRef} />
       </div>
 
