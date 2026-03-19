@@ -7,9 +7,10 @@ interface ProjectCardProps {
   tags: string[]
   icon: LucideIcon
   link?: string
+  footnote?: string
 }
 
-export function ProjectCard({ title, description, tags, icon: Icon, link }: ProjectCardProps) {
+export function ProjectCard({ title, description, tags, icon: Icon, link, footnote }: ProjectCardProps) {
   const isExternal = link?.startsWith('http')
   const cardContent = (
     <div className={`glass rounded-xl p-6 hover:bg-white/5 transition-all duration-300 group min-h-[400px] flex flex-col ${link ? 'cursor-pointer' : ''}`}>
@@ -19,7 +20,10 @@ export function ProjectCard({ title, description, tags, icon: Icon, link }: Proj
 
       <h3 className="text-2xl font-bold mb-3 text-balance">{title}</h3>
 
-      <p className="text-muted-foreground text-base mb-6 leading-relaxed flex-grow">{description}</p>
+      <p className={`text-muted-foreground text-base leading-relaxed flex-grow ${footnote ? 'mb-2' : 'mb-6'}`}>{description}</p>
+      {footnote && (
+        <p className="text-muted-foreground text-xs italic mb-6">{footnote}</p>
+      )}
 
       <div className="flex flex-wrap gap-2 mb-6">
         {tags.map((tag, index) => (
