@@ -1,7 +1,7 @@
 "use client"
 
 import { ProjectCard } from "@/components/project-card"
-import { MessageSquare, TrendingUp, Gamepad2, Zap, Database, Bot } from "lucide-react"
+import { MessageSquare, TrendingUp, Gamepad2, Zap, Database, Bot, Coins } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Projects() {
@@ -19,6 +19,12 @@ export function Projects() {
       tags: ["Node.js", "Discord", "OpenSea API", "viem"],
       icon: Bot,
       link: "https://bot.jamesmendenhall.art"
+    },
+    {
+      title: "DeFi Survival Agent",
+      description: "Autonomous Solana copy-trading bot that mirrors profitable wallets. Claude runs every 2 hours to analyze performance and can modify the bot's own code and strategy. Maybe I'll link the dashboard if it decides to turn a profit.",
+      tags: ["Python", "Claude API", "Solana", "Jupiter"],
+      icon: Coins,
     },
     {
       title: "SQLWars.io",

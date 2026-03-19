@@ -6,13 +6,13 @@ interface ProjectCardProps {
   description: string
   tags: string[]
   icon: LucideIcon
-  link: string
+  link?: string
 }
 
 export function ProjectCard({ title, description, tags, icon: Icon, link }: ProjectCardProps) {
-  const isExternal = link.startsWith('http')
+  const isExternal = link?.startsWith('http')
   const cardContent = (
-    <div className="glass rounded-xl p-6 hover:bg-white/5 transition-all duration-300 group min-h-[400px] flex flex-col cursor-pointer">
+    <div className={`glass rounded-xl p-6 hover:bg-white/5 transition-all duration-300 group min-h-[400px] flex flex-col ${link ? 'cursor-pointer' : ''}`}>
       <div className="mb-6 inline-flex p-3 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
         <Icon className="h-6 w-6 text-blue-400" />
       </div>
@@ -32,12 +32,16 @@ export function ProjectCard({ title, description, tags, icon: Icon, link }: Proj
         ))}
       </div>
 
-      <div className="text-foreground text-sm flex items-center">
-        View Project
-        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-      </div>
+      {link && (
+        <div className="text-foreground text-sm flex items-center">
+          View Project
+          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+        </div>
+      )}
     </div>
   )
+
+  if (!link) return cardContent
 
   if (isExternal) {
     return (
