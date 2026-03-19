@@ -20,10 +20,7 @@ export function ProjectCard({ title, description, tags, icon: Icon, link, footno
 
       <h3 className="text-2xl font-bold mb-3 text-balance">{title}</h3>
 
-      <p className={`text-muted-foreground text-base leading-relaxed flex-grow ${footnote ? 'mb-2' : 'mb-6'}`}>{description}</p>
-      {footnote && (
-        <p className="text-muted-foreground text-xs italic mb-6">{footnote}</p>
-      )}
+      <p className="text-muted-foreground text-base leading-relaxed flex-grow mb-6">{description}</p>
 
       <div className="flex flex-wrap gap-2 mb-6">
         {tags.map((tag, index) => (
@@ -36,6 +33,9 @@ export function ProjectCard({ title, description, tags, icon: Icon, link, footno
         ))}
       </div>
 
+      {footnote && (
+        <p className="text-muted-foreground text-xs italic mb-4">{footnote}</p>
+      )}
       {link && (
         <div className="text-foreground text-sm flex items-center">
           View Project
