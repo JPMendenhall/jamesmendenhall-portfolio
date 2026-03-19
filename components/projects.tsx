@@ -49,8 +49,8 @@ export function Projects() {
     },
     {
       title: "Sneks",
-      description: "NFT arcade game with blockchain wallet verification. Features cheat-proof score validation through backend re-simulation and Raspberry Pi automation for leaderboard updates.",
-      tags: ["P5.js", "Ethereum", "Python", "Raspberry Pi"],
+      description: "NFT arcade game with blockchain wallet verification. Features cheat-proof score validation on Render and automated daily Twitter posts via GitHub Actions.",
+      tags: ["P5.js", "Ethereum", "Python", "GitHub Actions"],
       icon: Gamepad2,
       link: "/sneks"
     },
