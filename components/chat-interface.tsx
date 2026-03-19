@@ -34,42 +34,22 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const userScrolledRef = useRef(false)
   const messagesContainerRef = useRef<HTMLDivElement>(null)
 
-  const isNearBottom = () => {
-    const container = messagesContainerRef.current
-    if (!container) return true
-    const threshold = 100
-    return container.scrollHeight - container.scrollTop - container.clientHeight < threshold
-  }
-
   const scrollToBottom = () => {
-    if (!userScrolledRef.current) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
   }
-
-  const handleScroll = () => {
-    if (!loading) return
-    userScrolledRef.current = !isNearBottom()
-  }
-
-  useEffect(() => {
-    scrollToBottom()
-  }, [messages])
 
   const sendMessage = async (question?: string) => {
     const messageText = question || input.trim()
     if (!messageText || loading) return
-
-    userScrolledRef.current = false
 
     // Add user message
     const userMessage: Message = { role: 'user', content: messageText }
     setMessages(prev => [...prev, userMessage])
     setInput('')
     setLoading(true)
+    scrollToBottom()
 
     try {
       // Create empty assistant message that we'll stream into
@@ -166,7 +146,7 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
       )}
 
       {/* Messages */}
-      <div ref={messagesContainerRef} onScroll={handleScroll} className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-6 space-y-4">
         {messages.map((message, idx) => (
           <div
             key={idx}
