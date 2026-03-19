@@ -1,7 +1,7 @@
 "use client"
 
 import { ProjectCard } from "@/components/project-card"
-import { MessageSquare, TrendingUp, Gamepad2, Zap, Database, Bot, Coins } from "lucide-react"
+import { MessageSquare, Gamepad2, Zap, Database, Bot, Coins } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Projects() {
@@ -40,14 +40,7 @@ export function Projects() {
       icon: MessageSquare,
       link: "/personal-ai"
     },
-    {
-      title: "Markets Report Agent",
-      description: "Autonomous AI agent analyzing TradFi and crypto markets daily. Synthesizes data from 4 APIs using GPT-4o-mini and deploys reports automatically via GitHub Actions.",
-      tags: ["AI Agents", "GitHub Actions", "Multi-API"],
-      icon: TrendingUp,
-      link: "/markets-report"
-    },
-    {
+{
       title: "Sneks",
       description: "NFT arcade game with blockchain wallet verification. Features cheat-proof score validation on Render and automated daily Twitter posts via GitHub Actions.",
       tags: ["P5.js", "Ethereum", "Python", "GitHub Actions"],
