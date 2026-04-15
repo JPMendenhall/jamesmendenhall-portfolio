@@ -22,7 +22,7 @@ export function Projects() {
     },
     {
       title: "DeFi Survival Agent",
-      description: "Autonomous Python bot that trades Solana memecoins by copy-trading profitable wallets. Claude runs every 2 hours to review performance and rewrite the bot's own code and strategy.",
+      description: "Autonomous Python bot that trades Solana memecoins. Every 2 hours Claude reviews performance and rewrites the bot's own trading strategy and code.",
       tags: ["Python", "Claude API", "Solana", "Jupiter"],
       icon: Coins,
     },
