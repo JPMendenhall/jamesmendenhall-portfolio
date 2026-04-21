@@ -56,10 +56,11 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
       const assistantMessageIndex = messages.length + 1
       setMessages(prev => [...prev, { role: 'assistant', content: '' }])
 
+      const history = [...messages, userMessage].slice(1) // drop the initial greeting
       const response = await fetch('https://web-production-888e.up.railway.app/chat-stream', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: messageText }),
+        body: JSON.stringify({ question: messageText, history }),
       })
 
       if (!response.ok) throw new Error('Failed to get response')
