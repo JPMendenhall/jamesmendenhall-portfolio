@@ -25,7 +25,9 @@ export function LatestAIPulse() {
 
         const htmlRes = await fetch(latest.download_url)
         if (!htmlRes.ok) throw new Error("Failed to fetch report HTML")
-        const html = await htmlRes.text()
+        const raw = await htmlRes.text()
+        // Make all links open in a new tab so they don't navigate inside the iframe
+        const html = raw.replace('<head>', '<head><base target="_blank">')
         setReportHtml(html)
       } catch (err) {
         setError(true)
