@@ -25,6 +25,7 @@ export function Projects() {
       description: "Autonomous Python bot that trades Solana memecoins. Every 2 hours Claude reviews performance and rewrites the bot's own trading strategy and code.",
       tags: ["Python", "Claude API", "Solana", "Jupiter"],
       icon: Coins,
+      link: "https://jpmendenhall.github.io/tradingBot/"
     },
     {
       title: "SQLWars.io",
