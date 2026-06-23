@@ -70,6 +70,7 @@ const personJsonLd = {
   "@id": "https://jamesmendenhall.dev/#person",
   name: "James Mendenhall",
   url: "https://jamesmendenhall.dev",
+  image: "https://jamesmendenhall.art/projects/midnight-florals/pfp-circe.png",
   jobTitle: "AI Integration & Process Automation Specialist",
   description: "AI integration and process automation specialist based in Indianapolis, Indiana.",
   address: {
