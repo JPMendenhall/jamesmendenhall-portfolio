@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script"
 import "./globals.css"
 import { Suspense } from "react"
 import { Lato, Press_Start_2P, Geist_Mono } from "next/font/google"
@@ -100,6 +101,15 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-B4ZGWRJW6V" strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-B4ZGWRJW6V');
+          `}
+        </Script>
       </body>
     </html>
   )
