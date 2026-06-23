@@ -61,6 +61,9 @@ export const metadata: Metadata = {
     description: "AI integration and process automation specialist in Indianapolis, Indiana.",
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: "3Ads-VLIyEVzSkcBuG_X2XaiMr2zhe2M04-3R3Xd5cU",
+  },
 }
 
 // Tells Google this is the same James Mendenhall as the art site + socials.
