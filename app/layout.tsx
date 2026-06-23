@@ -26,9 +26,63 @@ const pressStart2P = Press_Start_2P({
 })
 
 export const metadata: Metadata = {
-  title: "James Mendenhall - Process Automation & AI Integration Specialist",
-  description: "Process Automation and AI Integration Specialist building intelligent systems",
-  generator: "v0.app",
+  metadataBase: new URL("https://jamesmendenhall.dev"),
+  title: {
+    default: "James Mendenhall — AI Integration & Process Automation | Indianapolis",
+    template: "%s | James Mendenhall",
+  },
+  description:
+    "James Mendenhall is an AI integration and process automation specialist in Indianapolis, Indiana — building intelligent systems, custom AI assistants, and automation tooling.",
+  keywords: [
+    "James Mendenhall",
+    "AI integration specialist",
+    "process automation",
+    "AI automation Indianapolis",
+    "AI engineer Indianapolis",
+    "Indianapolis developer",
+  ],
+  authors: [{ name: "James Mendenhall", url: "https://jamesmendenhall.dev" }],
+  creator: "James Mendenhall",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "James Mendenhall",
+    title: "James Mendenhall — AI Integration & Process Automation",
+    description:
+      "AI integration and process automation specialist in Indianapolis, Indiana. Intelligent systems, custom AI assistants, and automation tooling.",
+    url: "https://jamesmendenhall.dev",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@JamesMendenhall",
+    creator: "@JamesMendenhall",
+    title: "James Mendenhall — AI Integration & Process Automation",
+    description: "AI integration and process automation specialist in Indianapolis, Indiana.",
+  },
+  robots: { index: true, follow: true },
+}
+
+// Tells Google this is the same James Mendenhall as the art site + socials.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://jamesmendenhall.dev/#person",
+  name: "James Mendenhall",
+  url: "https://jamesmendenhall.dev",
+  jobTitle: "AI Integration & Process Automation Specialist",
+  description: "AI integration and process automation specialist based in Indianapolis, Indiana.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Indianapolis",
+    addressRegion: "IN",
+    addressCountry: "US",
+  },
+  sameAs: [
+    "https://jamesmendenhall.art",
+    "https://www.instagram.com/jamesmendenhallart/",
+    "https://x.com/JamesMendenhall",
+  ],
 }
 
 export default function RootLayout({
@@ -39,6 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${lato.variable} ${geistMono.variable} ${pressStart2P.variable} antialiased`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
       </body>
