@@ -1,11 +1,18 @@
 "use client"
 
 import { ProjectCard } from "@/components/project-card"
-import { MessageSquare, Gamepad2, Zap, Database, Bot, Coins } from "lucide-react"
+import { MessageSquare, Gamepad2, Zap, Bot, Palette } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Projects() {
   const projects = [
+    {
+      title: "Fringe",
+      description: "Web3 artist portfolios pulled from on-chain data. Indexes every work an artist has minted across Nifty Gateway, Known Origin, MakersPlace, Foundation, Async, and more, including platforms that no longer exist.",
+      tags: ["Node.js", "PostgreSQL", "viem", "Ethereum"],
+      icon: Palette,
+      link: "https://fringe.art"
+    },
     {
       title: "AI Pulse",
       description: "Daily AI news roundup running automatically every morning. Collects from 50+ sources, synthesizes with GPT-4o-mini, and generates HTML reports via GitHub Actions.",
@@ -19,20 +26,6 @@ export function Projects() {
       tags: ["Node.js", "Discord", "OpenSea API", "viem"],
       icon: Bot,
       link: "https://bot.jamesmendenhall.art"
-    },
-    {
-      title: "DeFi Survival Agent",
-      description: "Autonomous Python bot that trades Solana memecoins. Every 2 hours Claude reviews performance and rewrites the bot's own trading strategy and code.",
-      tags: ["Python", "Claude API", "Solana", "Jupiter"],
-      icon: Coins,
-      link: "https://jpmendenhall.github.io/tradingBot/"
-    },
-    {
-      title: "SQLWars.io",
-      description: "Interactive SQL learning platform with 25 lessons across 6 themed databases. Features weekly timed challenges with global leaderboards and in-browser SQLite powered by WebAssembly.",
-      tags: ["React", "TypeScript", "sql.js", "Supabase"],
-      icon: Database,
-      link: "https://sqlwars.io"
     },
     {
       title: "Personal AI Assistant",
