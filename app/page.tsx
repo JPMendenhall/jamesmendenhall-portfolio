@@ -9,14 +9,8 @@ export default function Home() {
       <Hero />
       
       {/* Chat Section */}
-      <section className="py-12 px-4">
+      <section className="pt-4 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <p className="text-white-400">
-              Ask my AI assistant about my background, projects, or skills.
-            </p>
-          </div>
-          
           <ChatInterface compact={true} />
           
           

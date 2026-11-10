@@ -6,7 +6,7 @@ export function Hero() {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         <h1
-          className="text-xl md:text-2xl tracking-tight mb-4 text-balance text-white"
+          className="text-xl md:text-2xl tracking-tight text-balance text-white"
           style={{
             fontFamily: "var(--font-press-start)",
           }}
@@ -14,11 +14,6 @@ export function Hero() {
           jamesMendenhall.dev
           <span className="animate-blink">|</span>
         </h1>
-
-        {/* Tagline */}
-        <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-2 leading-relaxed text-balance">
-          Process Automation and AI Integration Specialist
-        </p>
       </div>
     </section>
   )
