@@ -24,7 +24,7 @@ export default function AIPulsePage() {
           <div className="text-6xl mb-4">⚡</div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">AI Pulse</h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Daily AI & Technology Intelligence • Automated news roundup covering breakthroughs, products, and industry moves
+            Daily AI news report, collected and summarized by a GitHub Actions job each morning
           </p>
         </div>
       </section>

@@ -22,7 +22,7 @@ export default function SneksPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Sneks</h1>
           <p className="text-xl text-muted-foreground mb-8">
-            NFT arcade game on Base L2 with AI-powered content automation
+            Snake game for Sneks NFT holders on Base, with daily X posts captioned by Claude
           </p>
         </div>
       </section>
@@ -32,7 +32,6 @@ export default function SneksPage() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-8xl mb-6">🐍</div>
           <p className="text-2xl font-bold mb-2">SNEKS</p>
-          <p className="text-muted-foreground mb-4">Web3 Gaming + AI Content Automation</p>
           <p className="text-sm text-yellow-400 mb-6 flex items-center justify-center gap-2">
             <Trophy className="h-4 w-4" />
             Bi-weekly prizes for top scores
@@ -74,12 +73,12 @@ export default function SneksPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Frontend: P5.js Game Engine</h3>
                   <p className="text-muted-foreground mb-3">
-                    Classic snake mechanics with seedable random generation for deterministic replay. Mobile-responsive controls, real-time scoring, and dynamic speed scaling as snake grows.
+                    Classic snake. A seeded random generator makes each run replayable, and the snake speeds up as it grows.
                   </p>
                   <ul className="space-y-1 text-sm text-muted-foreground ml-4">
                     <li>• <strong>Controls:</strong> Keyboard (WASD/arrows) and touch support</li>
-                    <li>• <strong>Deterministic RNG:</strong> Enables server-side verification</li>
-                    <li>• <strong>Input Logging:</strong> Every move timestamped for replay</li>
+                    <li>• <strong>Seeded RNG:</strong> Lets the server re-run a game to check it</li>
+                    <li>• <strong>Input Logging:</strong> Each move timestamped for replay</li>
                   </ul>
                 </div>
               </div>
@@ -94,13 +93,11 @@ export default function SneksPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Blockchain: Base L2 NFTs</h3>
                   <p className="text-muted-foreground mb-3">
-                    NFT collection on Base blockchain verified via OpenSea API. Daily turns allocated to holders. All gameplay off-chain (gas-free). Bi-weekly prize competitions for top leaderboard scores.
+                    Holders get daily turns, checked against OpenSea. Gameplay is off-chain, so it costs no gas. Top leaderboard scores win prizes every two weeks.
                   </p>
                   <ul className="space-y-1 text-sm text-muted-foreground ml-4">
                     <li>• <strong>Collection:</strong> 10,000 Sneks on Base L2</li>
                     <li>• <strong>Verification:</strong> Real-time OpenSea API checks</li>
-                    <li>• <strong>Gas-Free:</strong> Play without transaction fees</li>
-                    <li>• <strong>Prizes:</strong> Bi-weekly competitions</li>
                   </ul>
                 </div>
               </div>
@@ -115,13 +112,12 @@ export default function SneksPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Backend: Render + PostgreSQL</h3>
                   <p className="text-muted-foreground mb-3">
-                    Node.js backend on Render with PostgreSQL for leaderboards and score verification. Server replays game using seed + input log to validate scores (anti-cheat). Automated cron jobs for maintenance.
+                    Node.js on Render with PostgreSQL for scores and turns. The server replays each game from its seed and input log before accepting the score. A cron job clears the leaderboard.
                   </p>
                   <ul className="space-y-1 text-sm text-muted-foreground ml-4">
                     <li>• <strong>Hosting:</strong> Render (always-on Node.js)</li>
                     <li>• <strong>Database:</strong> PostgreSQL for scores and turns</li>
                     <li>• <strong>Anti-Cheat:</strong> Deterministic replay verification</li>
-                    <li>• <strong>Automation:</strong> Cron jobs for leaderboard clearing</li>
                   </ul>
                 </div>
               </div>
@@ -136,10 +132,9 @@ export default function SneksPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">AI Automation: Claude API + GitHub Actions</h3>
                   <p className="text-muted-foreground mb-3">
-                    Daily Twitter posts automated via GitHub Actions. Posts one NFT from the 10k collection per day. Claude API generates Aesop Rock-style captions from NFT metadata. Zero manual posting.
+                    A GitHub Actions job posts one Snek from the 10k collection to X each day. Claude writes the caption from the NFT's metadata, in an Aesop Rock style.
                   </p>
                   <ul className="space-y-1 text-sm text-muted-foreground ml-4">
-                    <li>• <strong>Daily Posts:</strong> One NFT per day from collection</li>
                     <li>• <strong>AI Captions:</strong> Claude API writes tweet text</li>
                     <li>• <strong>Style:</strong> Aesop Rock-inspired (lyrical, cryptic)</li>
                     <li>• <strong>Automation:</strong> GitHub Actions + Twitter API</li>
@@ -154,7 +149,7 @@ export default function SneksPage() {
       {/* CTA */}
       <section className="px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Play?</h2>
+          <h2 className="text-3xl font-bold mb-4">Play Sneks</h2>
           <p className="text-muted-foreground mb-8">
             Connect your wallet and compete for bi-weekly prizes
           </p>

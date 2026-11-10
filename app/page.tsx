@@ -13,7 +13,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <p className="text-white-400">
-              Meet my AI assistant - ask about my background, projects, experience, or skills.
+              Ask my AI assistant about my background, projects, or skills.
             </p>
           </div>
           

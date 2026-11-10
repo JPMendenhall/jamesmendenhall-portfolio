@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Database, Zap, Search, Brain } from "lucide-react"
+import { ArrowLeft, Database, FileText, Brain } from "lucide-react"
 import Link from "next/link"
 import ChatInterface from "@/components/chat-interface"
 
@@ -23,10 +23,7 @@ export default function PersonalAIPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Personal AI Assistant</h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Production-grade RAG system with Langfuse observability
-          </p>
-          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            Semantic search + LLM orchestration with real-time monitoring and analytics
+            Chatbot that answers questions about my background, built on a Flask API with Langfuse tracing
           </p>
         </div>
       </section>
@@ -47,16 +44,16 @@ export default function PersonalAIPage() {
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-4 text-center">
-            💡 Tip: Every interaction is monitored with Langfuse observability
+            Each chat is logged in Langfuse.
           </p>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* Request flow */}
       <section className="px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">How the System Works</h2>
-          
+          <h2 className="text-3xl font-bold mb-12 text-center">From Question to Answer</h2>
+
           <div className="space-y-6">
             <div className="glass rounded-xl p-6">
               <div className="flex items-start gap-4">
@@ -64,9 +61,9 @@ export default function PersonalAIPage() {
                   <Database className="h-6 w-6 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">1. Knowledge Base Storage</h3>
+                  <h3 className="text-xl font-semibold mb-2">1. Knowledge Base</h3>
                   <p className="text-muted-foreground">
-                    6 detailed documents stored in Supabase PostgreSQL with pgvector extension. Each document converts to a 1536-dimension vector using OpenAI's text-embedding-3-small. Langfuse tracks embedding generation cost and latency for optimization.
+                    Markdown files in the API's repo: my résumé, current role, project write-ups, and art background. The API reads them at startup and joins them into one block of text, about 35,000 characters.
                   </p>
                 </div>
               </div>
@@ -75,26 +72,12 @@ export default function PersonalAIPage() {
             <div className="glass rounded-xl p-6">
               <div className="flex items-start gap-4">
                 <div className="bg-purple-500/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Search className="h-6 w-6 text-purple-400" />
+                  <FileText className="h-6 w-6 text-purple-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">2. Semantic Search with Langfuse</h3>
+                  <h3 className="text-xl font-semibold mb-2">2. Prompt</h3>
                   <p className="text-muted-foreground">
-                    Questions convert to vector embeddings and calculate cosine similarity. Langfuse spans capture search performance: query time, document ranking, similarity scores. Query expansion ("education" → "education school university degree") is tracked for effectiveness analysis.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="glass rounded-xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-green-500/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Zap className="h-6 w-6 text-green-400" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">3. Context Retrieval & Ranking</h3>
-                  <p className="text-muted-foreground">
-                    Top 3 most relevant documents (above 0.3 similarity threshold) combine as context. Langfuse tracks retrieval performance: document ranking, threshold filtering decisions, and context quality metrics to identify hallucination risk.
+                    Each question goes to GPT-4o-mini with the whole knowledge base in the system prompt, plus the earlier messages from the chat. The files are small enough to send in full, so there's no vector search. The prompt tells the model to answer only from that text and to say when it doesn't know.
                   </p>
                 </div>
               </div>
@@ -106,9 +89,9 @@ export default function PersonalAIPage() {
                   <Brain className="h-6 w-6 text-orange-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">4. AI Response with Monitoring</h3>
+                  <h3 className="text-xl font-semibold mb-2">3. Response</h3>
                   <p className="text-muted-foreground">
-                    GPT-4o-mini generates responses using retrieved context. Langfuse captures: LLM API calls, token usage (prompt vs completion), latency, cost, temperature settings, and system prompt effectiveness. Enables debugging of quality issues.
+                    The answer streams back to the page over server-sent events. Langfuse wraps the OpenAI client and records tokens, cost, and latency for each call.
                   </p>
                 </div>
               </div>
@@ -125,43 +108,36 @@ export default function PersonalAIPage() {
           <div className="glass rounded-xl p-8">
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold mb-3 text-blue-400">Backend: Flask API</h3>
+                <h3 className="text-xl font-semibold mb-3 text-blue-400">Backend: Flask API on Railway</h3>
                 <ul className="space-y-2 text-muted-foreground ml-4 text-sm">
                   <li>• <strong>Endpoints:</strong> /health, /chat, /chat-stream</li>
-                  <li>• <strong>CORS:</strong> Enabled for cross-origin requests</li>
-                  <li>• <strong>Error Handling:</strong> Graceful failures with user-friendly messages</li>
+                  <li>• <strong>Streaming:</strong> Server-sent events from /chat-stream</li>
+                  <li>• <strong>Deploys:</strong> Railway redeploys on a push to main</li>
                 </ul>
               </div>
 
               <div className="border-t border-white/10 pt-6">
-                <h3 className="text-xl font-semibold mb-3 text-purple-400">Database & Vector Search</h3>
+                <h3 className="text-xl font-semibold mb-3 text-purple-400">Knowledge Base</h3>
                 <ul className="space-y-2 text-muted-foreground ml-4 text-sm">
-                  <li>• <strong>PostgreSQL:</strong> Robust relational database</li>
-                  <li>• <strong>pgvector:</strong> Native vector similarity search (cosine distance)</li>
-                  <li>• <strong>IVFFlat Index:</strong> Optimized for fast vector operations</li>
-                  <li>• <strong>Metadata Filtering:</strong> Category, source, document_type for precision</li>
-                  <li>• <strong>Langfuse Tracing:</strong> Tracks query latency and retrieval performance</li>
+                  <li>• <strong>Format:</strong> Markdown files in the repo</li>
+                  <li>• <strong>Updates:</strong> Edit a file and push; the new text is live after the redeploy</li>
                 </ul>
               </div>
 
               <div className="border-t border-white/10 pt-6">
-                <h3 className="text-xl font-semibold mb-3 text-green-400">AI & Observability</h3>
+                <h3 className="text-xl font-semibold mb-3 text-green-400">Model</h3>
                 <ul className="space-y-2 text-muted-foreground ml-4 text-sm">
-                  <li>• <strong>OpenAI SDK:</strong> gpt-4o-mini for responses, text-embedding-3-small for vectors</li>
-                  <li>• <strong>Langfuse Tracing:</strong> Spans for embedding, search, retrieval, generation</li>
-                  <li>• <strong>Token Tracking:</strong> Monitor prompt/completion ratio and costs</li>
-                  <li>• <strong>Latency Monitoring:</strong> Identify bottlenecks (search vs LLM)</li>
-                  <li>• <strong>Quality Metrics:</strong> Similarity scores, threshold decisions, error rates</li>
+                  <li>• <strong>OpenAI:</strong> gpt-4o-mini, temperature 0.7, 500 max tokens</li>
+                  <li>• <strong>History:</strong> The page sends earlier messages with each question</li>
+                  <li>• <strong>Rules:</strong> Answer from the knowledge base only, keep it short, no recruiter language</li>
                 </ul>
               </div>
 
               <div className="border-t border-white/10 pt-6">
-                <h3 className="text-xl font-semibold mb-3 text-orange-400">Quality & Safety</h3>
+                <h3 className="text-xl font-semibold mb-3 text-orange-400">Observability: Langfuse</h3>
                 <ul className="space-y-2 text-muted-foreground ml-4 text-sm">
-                  <li>• <strong>Query Expansion:</strong> Short queries auto-expanded for better matching</li>
-                  <li>• <strong>Anti-Hallucination:</strong> Strict system prompts + similarity thresholds</li>
-                  <li>• <strong>Mode Switching:</strong> Professional vs creative based on context</li>
-                  <li>• <strong>Langfuse Debugging:</strong> Identify which inputs cause quality issues</li>
+                  <li>• <strong>Tracing:</strong> OpenAI client wrapped by Langfuse</li>
+                  <li>• <strong>Logged per call:</strong> Prompt and completion tokens, cost, latency</li>
                 </ul>
               </div>
 

@@ -1,42 +1,49 @@
 "use client"
 
 import { ProjectCard } from "@/components/project-card"
-import { MessageSquare, Gamepad2, Zap, Bot, Palette } from "lucide-react"
+import { MessageSquare, Gamepad2, Zap, Bot, Palette, Shapes } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Projects() {
   const projects = [
     {
       title: "Fringe",
-      description: "Web3 artist portfolios pulled from on-chain data. Indexes every work an artist has minted across Nifty Gateway, Known Origin, MakersPlace, Foundation, Async, and more, including platforms that no longer exist.",
+      description: "Web3 artist portfolios built from on-chain data. Each page lists an artist's minted work across Nifty Gateway, Known Origin, MakersPlace, Foundation, Async and more, including platforms that have shut down.",
       tags: ["Node.js", "PostgreSQL", "viem", "Ethereum"],
       icon: Palette,
       link: "https://fringe.art"
     },
     {
+      title: "Long-Form Generative Art",
+      description: "Seeded, deterministic art created from JavaScript. A token's hash drives the random generator, so the same hash always draws the same piece. Released on Art Blocks and Verse.",
+      tags: ["JavaScript", "Art Blocks", "Verse", "Ethereum"],
+      icon: Shapes,
+      link: "https://jamesmendenhall.art/generative"
+    },
+    {
       title: "AI Pulse",
-      description: "Daily AI news roundup running automatically every morning. Collects from 50+ sources, synthesizes with GPT-4o-mini, and generates HTML reports via GitHub Actions.",
+      description: "Daily AI news report. A GitHub Actions job pulls articles from 50+ sources each morning, GPT-4o-mini summarizes them, and the result is published as an HTML page.",
       tags: ["NewsAPI", "OpenAI", "GitHub Actions", "Automation"],
       icon: Zap,
       link: "/ai-pulse"
     },
     {
       title: "Underground NFT Bot",
-      description: "Token-gated Discord bot platform for real-time NFT market monitoring. Features multi-collection tracking, smart price alerts with sweep detection, and blockchain-verified access control.",
+      description: "Discord bot that posts NFT listings and sales for the collections you track, with alerts for under-floor listings and sweeps. Access requires holding Subterrestrials NFTs, checked on-chain.",
       tags: ["Node.js", "Discord", "OpenSea API", "viem"],
       icon: Bot,
       link: "https://bot.jamesmendenhall.art"
     },
     {
       title: "Personal AI Assistant",
-      description: "RAG chatbot that answers questions about my professional background. Built with Flask API, OpenAI embeddings, and Supabase vector database. Features semantic search with Langfuse observability.",
-      tags: ["Python", "OpenAI", "Supabase", "Vector Search"],
+      description: "The chatbot on this site. A Flask API on Railway puts my résumé and project notes into GPT-4o-mini's prompt, and Langfuse logs each call's tokens, cost, and latency.",
+      tags: ["Python", "Flask", "OpenAI", "Langfuse"],
       icon: MessageSquare,
       link: "/personal-ai"
     },
 {
       title: "Sneks",
-      description: "NFT arcade game with blockchain wallet verification. Features cheat-proof score validation on Render and automated daily Twitter posts via GitHub Actions.",
+      description: "Snake game for holders of the Sneks NFT collection on Base. The server replays each run from its seed and inputs to check the score, and a GitHub Actions job posts one Snek to X daily with a caption written by Claude.",
       tags: ["P5.js", "Ethereum", "Python", "GitHub Actions"],
       icon: Gamepad2,
       link: "/sneks"

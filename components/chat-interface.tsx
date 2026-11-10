@@ -28,7 +28,7 @@ export default function ChatInterface({ compact = false }: ChatInterfaceProps) {
       role: 'assistant',
       content: compact
         ? "Hi! Ask me about James's experience, projects, or skills."
-        : "Hi! I'm an AI assistant that can answer questions about James Mendenhall's professional background, projects, and experience. Ask me anything!"
+        : "Hi! I answer questions about James Mendenhall's background, projects, and experience."
     }
   ])
   const [input, setInput] = useState('')

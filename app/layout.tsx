@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | James Mendenhall",
   },
   description:
-    "James Mendenhall is an AI integration and process automation specialist in Indianapolis, Indiana — building intelligent systems, custom AI assistants, and automation tooling.",
+    "James Mendenhall is an AI integration and process automation specialist in Indianapolis, Indiana. He builds AI assistants and automation tools.",
   keywords: [
     "James Mendenhall",
     "AI integration specialist",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     siteName: "James Mendenhall",
     title: "James Mendenhall — AI Integration & Process Automation",
     description:
-      "AI integration and process automation specialist in Indianapolis, Indiana. Intelligent systems, custom AI assistants, and automation tooling.",
+      "AI integration and process automation specialist in Indianapolis, Indiana. Builds AI assistants and automation tools.",
     url: "https://jamesmendenhall.dev",
     locale: "en_US",
   },
